@@ -1,0 +1,29 @@
+
+spring:
+  application:
+    name: Current-Audit-Server
+  devtools:
+    restart:
+      log-condition-evaluation-delta: true
+      enabled: true
+  datasource:
+    dynamic:
+      primary: test
+      strict: false #设置严格模式,默认false不启动. 启动后在未匹配到指定数据源时候会抛出异常,不启动则使用默认数据源.
+      datasource:
+        test:
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://localhost/test?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+          username: root
+          password: root
+
+        test1:
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://localhost/test1?useSSL=false&useUnicode=true&characterEncoding=UTF-8
+          username: root
+          password: root
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: false
+  mapper-locations: classpath*:/mapper/*.xml
